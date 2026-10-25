@@ -1,0 +1,4 @@
+"Effect","RCBD_error_df","RCBD_F","RCBD_p","SplitPlot_error_df","SplitPlot_F","SplitPlot_p","MixedModel_F","MixedModel_p"
+"Variety",55,3.51,0.0366,10,1.49,0.272,1.49,0.272
+"Nitrogen",55,26.25,1.13e-10,45,37.69,2.46e-12,37.69,2.46e-12
+"Variety x Nitrogen",55,0.21,0.972,45,0.3,0.932,0.3,0.932
