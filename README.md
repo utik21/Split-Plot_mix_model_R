@@ -5,7 +5,7 @@ Author: Utik Tri Wulan Cahya, PhD
 
 Split-plot experiments are common in agronomy, and they are often analysed incorrectly as simple randomized complete block designs (RCBD). This project shows the correct analysis of a split-plot field trial with a linear mixed model in R, and compares it with the common incorrect approach to show how the wrong error term changes the conclusions.
 
-![Variety x nitrogen response](output/figures/fig1_variety_nitrogen_response.png)
+![Variety x nitrogen response](fig1_variety_nitrogen_response.png)
 
 ## Data
 
@@ -42,18 +42,26 @@ The classic oats experiment of Yates (1935), distributed as `oats` in the R pack
 - **Variance components:** blocks 43%, whole-plot error 21%, subplot error 36% of the total variance, which confirms that the two error levels are clearly different.
 - **Assumptions:** no strong evidence against normality (Shapiro-Wilk p = 0.27) or equal variance across nitrogen rates (Levene p = 0.34). Residual spread across varieties was borderline (Levene p = 0.06) and was noted.
 
-![RCBD vs split-plot p-values](output/figures/fig2_rcbd_vs_splitplot_pvalues.png)
+![RCBD vs split-plot p-values](fig2_rcbd_vs_splitplot_pvalues.png)
 
 ## Files
 
-```
-R/splitplot_analysis.R          Full, commented analysis script
-data/oats.csv                   Data used (exported from MASS::oats)
-output/model_output.txt         Complete console output, including session info
-output/tables/                  ANOVA comparison, means with Tukey letters,
-                                polynomial contrasts, cell means, variance components
-output/figures/                 Publication-ready figures (300 dpi) and portfolio cover
-```
+| File | Content |
+|---|---|
+| `splitplot_analysis.R` | Full, commented analysis script |
+| `oats.csv` | Data used (exported from `MASS::oats`) |
+| `model_output.txt` | Complete console output, including session info |
+| `anova_comparison_rcbd_vs_splitplot.csv` | ANOVA results: incorrect RCBD vs correct split-plot |
+| `means_nitrogen_tukey.csv`, `means_variety_tukey.csv` | Means with Tukey letter groupings |
+| `nitrogen_polynomial_contrasts.csv` | Linear, quadratic and cubic nitrogen contrasts |
+| `cell_means_variety_x_nitrogen.csv` | Variety x nitrogen means |
+| `variance_components.csv` | Block, whole-plot and subplot variance |
+| `fig1` to `fig4` (`.png`) | Publication-ready figures (300 dpi) |
+| `splitplot_case_study.pdf` | Three-page case study |
+
+![Nitrogen means with Tukey letters](fig4_nitrogen_means_tukey.png)
+
+![Model diagnostics](fig3_model_diagnostics.png)
 
 ## How to reproduce
 
@@ -65,8 +73,10 @@ install.packages(c("MASS", "lme4", "lmerTest", "pbkrtest", "emmeans",
 Then, from the project folder:
 
 ```
-Rscript R/splitplot_analysis.R
+Rscript splitplot_analysis.R
 ```
+
+The script loads the data from the MASS package and writes all tables and figures to a new `output/` folder.
 
 Analysed with R 4.3.3; package versions are listed at the end of `output/model_output.txt`.
 
